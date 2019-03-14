@@ -483,6 +483,28 @@ function commnadValveManually(valve, state) {
 
 //---------------------------------ENTRY POINT ----------------------------------------------
 $(document).ready(function() {
+
+    loadMonitorValveModule(".zone1.monitor", "Zona 1", "img/endvalve.png");	
+    loadMonitorValveModule(".zone2.monitor", "Zona 2", "img/endvalve.png");	
+    loadMonitorValveModule(".zone3.monitor", "Zona 3", "img/endvalve.png");	
+    loadMonitorValveModule(".zone4.monitor", "Zona 4", "img/endvalve.png");	
+    loadMonitorValveModule(".zone5.monitor", "Zona 5", "img/endvalve.png");	
+    loadMonitorValveModule(".zone6.monitor", "Zona 6", "img/endvalve.png");							
+    $("#week-program").load('elements/weekcheckbox/weekcheckbox.htm');
+    loadTimeProgramSetModule(".zone1.time-set", "Zona 1");
+    loadTimeProgramSetModule(".zone2.time-set", "Zona 2");
+    loadTimeProgramSetModule(".zone3.time-set", "Zona 3");
+    loadTimeProgramSetModule(".zone4.time-set", "Zona 4");
+    loadTimeProgramSetModule(".zone5.time-set", "Zona 5");
+    loadTimeProgramSetModule(".zone6.time-set", "Zona 6");
+
+    loadTimeProgramSummaryModule(".zone1.time-summary", "Zona 1");
+    loadTimeProgramSummaryModule(".zone2.time-summary", "Zona 2");
+    loadTimeProgramSummaryModule(".zone3.time-summary", "Zona 3");
+    loadTimeProgramSummaryModule(".zone4.time-summary", "Zona 4");
+    loadTimeProgramSummaryModule(".zone5.time-summary", "Zona 5");
+    loadTimeProgramSummaryModule(".zone6.time-summary", "Zona 6");						
+
   //var tags = [];
   var activeTab = 0;
   var IOintervalId = 0;
