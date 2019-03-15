@@ -245,19 +245,6 @@ function getSettings() {
   });
 }
 
-function getActualTime() {
-  console.log("Read time");
-  $.get("ActualTime.htm")
-    .done(function(data) {
-      const tags = data.split("\n");
-      var date = parseDate(tags[0]);
-      var time = parseTod(tags[1]);
-      $("#actual-date-time").text(date + " - " + time.getHours() + ":" + time.getMinutes())})
-    .catch(function(){
-        console.log("Failed to get time from PLC");
-  });
-}
-
 //-------------------------------- WRITING DATA TO PLC ---------------------------------------
 function writeTagsToPLC(url, tags, fail_callback, success_callback) {
   $.ajax({
@@ -467,6 +454,8 @@ function commnadValveManually(valve, state) {
 //---------------------------------ENTRY POINT ----------------------------------------------
 $(document).ready(function() {
 
+  $.ajaxSetup({ cache: false });
+
   //load html modules
   $("#week-program").load('elements/weekcheckbox/weekcheckbox.htm');
   loadMonitorValveModule(".zone1.monitor", "Zona 1", "img/valve.png");	
@@ -490,8 +479,6 @@ $(document).ready(function() {
   loadTimeProgramSummaryModule(".zone5.time-summary", "Zona 5");
   loadTimeProgramSummaryModule(".zone6.time-summary", "Zona 6");		
 
-
-
   //initialize page view and configure buttons to navigate
   $("#monitor-page").show();
   $("#time-program-page").hide();
@@ -512,7 +499,8 @@ $(document).ready(function() {
     $("#settings-page").show();   
   });
 
-  $.ajaxSetup({ cache: false });
+//Start reading time
+  runGetTime();
 
   //----------------------LOAD MANUAL BUTTONS--------------------------
   
