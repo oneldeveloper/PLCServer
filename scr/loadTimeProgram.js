@@ -1,4 +1,4 @@
-function loadTimeProgramSetModule(zone, name){
+export default function loadTimeProgramSetModule(zone, name){
     $(zone).load('elements/TimeProgramSetModule.htm', function(){
         $(zone + " .zone-name").text(name);
         $(zone +" .button-confirm-program").click(function() {
@@ -7,7 +7,7 @@ function loadTimeProgramSetModule(zone, name){
     });	
 }
 
-function loadTimeProgramSummaryModule(zone, name){
+export default function loadTimeProgramSummaryModule(zone, name){
     $(zone).load('elements/TimeProgramResumeModule.htm', function(){
         $(zone + " .zone-name").text(name);
     });	

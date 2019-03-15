@@ -1,4 +1,4 @@
-function addToggleSwitchEvents(toggleswitch, checkedFunction, uncheckedFunction)
+export default function addToggleSwitchEvents(toggleswitch, checkedFunction, uncheckedFunction)
 {
     toggleswitch.bind('change', function(){
         if($(this).is(':checked')){
