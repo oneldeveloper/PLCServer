@@ -7,69 +7,81 @@
 		 <link href="css/toggleswitch.css" rel="stylesheet" />
 		 <!--Javascript -->		 
 		 <script src="scr/jquery-3.3.1.min.js" type="text/javascript"></script>
+		 <script src="src/moment.js" type="text/javascript"></script>
 		 <script src="scr/loadHTMLmodules.js" type="text/javascript"></script>
 		 <script src="scr/loadTimeProgram.js" type="text/javascript"></script>
 		 <script src="scr/getActualTime.js" type="text/javascript"></script>
-
+		 <script src="scr/getIO.js" type="text/javascript"></script>
 		 <!--<script src="src/moment.js" type="text/javascript"></script>-->
-		 <script src="scr/index.js" type="text/javascript"></script>
+		 <!--Write variables to PLC-->
+<!-- AWP_In_Variable Name='"WebDataIn".ManualEnable.Valve1' -->
+<!-- AWP_In_Variable Name='"WebDataIn".ManualEnable.Valve2' -->
+<!-- AWP_In_Variable Name='"WebDataIn".ManualEnable.Valve3' -->
+<!-- AWP_In_Variable Name='"WebDataIn".ManualEnable.Valve4' -->
+<!-- AWP_In_Variable Name='"WebDataIn".ManualEnable.Valve5' -->
+<!-- AWP_In_Variable Name='"WebDataIn".ManualEnable.Valve6' -->
+<!-- AWP_In_Variable Name='"WebDataIn".Settings.NewActualTime' -->
+<!-- AWP_In_Variable Name='"WebDataIn".Settings.NewActualDate' -->		
+<!-- AWP_In_Variable Name='"WebDataIn".Settings.ConfirmChangeCurrentTime' -->	
+<!-- AWP_In_Variable Name='"WebDataIn".Settings.Email' -->
+<!-- AWP_In_Variable Name='"WebDataIn".Settings.EmailEnable' -->			
+<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.EnableMonday' -->	
+<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.EnableTuesday' -->	
+<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.EnableWednesday' -->	
+<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.EnableThursday' -->	
+<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.EnableFriday' -->	
+<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.EnableSaturday' -->	
+<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.EnableSunday' -->	
+<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.Zone1On1' -->
+<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.Zone1Off1' -->
+<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.Zone1On2' -->
+<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.Zone1Off2' -->
+<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.Zone2On1' -->
+<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.Zone2Off1' -->
+<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.Zone2On2' -->
+<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.Zone2Off2' -->
+<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.Zone3On1' -->
+<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.Zone3Off1' -->
+<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.Zone3On2' -->
+<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.Zone3Off2' -->
+<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.Zone4On1' -->
+<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.Zone4Off1' -->
+<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.Zone4On2' -->
+<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.Zone4Off2' -->
+<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.Zone5On1' -->
+<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.Zone5Off1' -->
+<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.Zone5On2' -->
+<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.Zone5Off2' -->
+<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.Zone6On1' -->
+<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.Zone6Off1' -->
+<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.Zone6On2' -->
+<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.Zone6Off2' -->
+<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.Zone1Enabled' -->
+<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.Zone2Enabled' -->
+<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.Zone3Enabled' -->
+<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.Zone4Enabled' -->
+<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.Zone5Enabled' -->
+<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.Zone6Enabled' -->		
+<!-- AWP_In_Variable Name='"WebDataIn".PumpSetpoints.PressureZone1' -->
+<!-- AWP_In_Variable Name='"WebDataIn".PumpSetpoints.PressureZone2' -->
+<!-- AWP_In_Variable Name='"WebDataIn".PumpSetpoints.PressureZone3' -->
+<!-- AWP_In_Variable Name='"WebDataIn".PumpSetpoints.PressureZone4' -->
+<!-- AWP_In_Variable Name='"WebDataIn".PumpSetpoints.PressureZone5' -->
+<!-- AWP_In_Variable Name='"WebDataIn".PumpSetpoints.PressureZone6' -->
+<!-- AWP_In_Variable Name='"WebDataIn".PumpSetpoints.SpeedZone1' -->
+<!-- AWP_In_Variable Name='"WebDataIn".PumpSetpoints.SpeedZone2' -->
+<!-- AWP_In_Variable Name='"WebDataIn".PumpSetpoints.SpeedZone3' -->
+<!-- AWP_In_Variable Name='"WebDataIn".PumpSetpoints.SpeedZone4' -->
+<!-- AWP_In_Variable Name='"WebDataIn".PumpSetpoints.SpeedZone5' -->
+<!-- AWP_In_Variable Name='"WebDataIn".PumpSetpoints.SpeedZone6' -->
 
-		<!--Write variables to PLC-->
-		<!-- AWP_In_Variable Name='"WebDataIn".ManualEnable.Valve1' -->
-		<!-- AWP_In_Variable Name='"WebDataIn".ManualEnable.Valve2' -->
-		<!-- AWP_In_Variable Name='"WebDataIn".ManualEnable.Valve3' -->
-		<!-- AWP_In_Variable Name='"WebDataIn".ManualEnable.Valve4' -->
-		<!-- AWP_In_Variable Name='"WebDataIn".ManualEnable.Valve5' -->
-		<!-- AWP_In_Variable Name='"WebDataIn".ManualEnable.Valve6' -->
-		<!-- AWP_In_Variable Name='"WebDataIn".Settings.NewActualTime' -->
-		<!-- AWP_In_Variable Name='"WebDataIn".Settings.NewActualDate' -->		
-		<!-- AWP_In_Variable Name='"WebDataIn".Settings.ConfirmChangeCurrentTime' -->	
-		<!-- AWP_In_Variable Name='"WebDataIn".Settings.Email' -->
-		<!-- AWP_In_Variable Name='"WebDataIn".Settings.EmailEnable' -->			
-		<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.EnableMonday' -->	
-		<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.EnableTuesday' -->	
-		<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.EnableWednesday' -->	
-		<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.EnableThursday' -->	
-		<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.EnableFriday' -->	
-		<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.EnableSaturday' -->	
-		<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.EnableSunday' -->	
-		<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.Zone1On1' -->
-		<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.Zone1Off1' -->
-		<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.Zone1On2' -->
-		<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.Zone1Off2' -->
-		<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.Zone2On1' -->
-		<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.Zone2Off1' -->
-		<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.Zone2On2' -->
-		<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.Zone2Off2' -->
-		<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.Zone3On1' -->
-		<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.Zone3Off1' -->
-		<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.Zone3On2' -->
-		<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.Zone3Off2' -->
-		<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.Zone4On1' -->
-		<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.Zone4Off1' -->
-		<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.Zone4On2' -->
-		<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.Zone4Off2' -->
-		<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.Zone5On1' -->
-		<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.Zone5Off1' -->
-		<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.Zone5On2' -->
-		<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.Zone5Off2' -->
-		<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.Zone6On1' -->
-		<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.Zone6Off1' -->
-		<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.Zone6On2' -->
-		<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.Zone6Off2' -->
-		<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.Zone1Enabled' -->
-		<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.Zone2Enabled' -->
-		<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.Zone3Enabled' -->
-		<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.Zone4Enabled' -->
-		<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.Zone5Enabled' -->
-		<!-- AWP_In_Variable Name='"WebDataIn".ProgramTime.Zone6Enabled' -->
-	
 	</head>
 	<body>
 	<div id="menu-bar" class="centered">
 		<button id="button-monitor-page"><span>Monitoraggio</span></button>
 		<button id="button-time-program-page"><span>Calendario Programmi</span></button>
 		<button id="button-settings-page"><span>Impostazioni</span></button>
+		<label id="actual-date-time"></label>
 	
 
 		<div id="monitor-page">
@@ -322,4 +334,5 @@
 	</div>
 	
 	</body>
+	<script src="scr/index.js" type="text/javascript"></script>
 </html>

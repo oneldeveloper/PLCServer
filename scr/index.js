@@ -20,217 +20,120 @@ var plcURL = "http://172.19.8.10/awp/Irrigazione/Index.html";
 
 function getPrograms() {
   console.log("Read Programs");
-  request = $.get("ProgramTime.htm", function(data) {
-    tags = data.split("\n");
-  });
-  request.done(function() {
-    var Zone1On1 = parseTod(tags[0].trim());
-    var Zone1Off1 = parseTod(tags[1].trim());
-    var Zone1On2 = parseTod(tags[2].trim());
-    var Zone1Off2 = parseTod(tags[3].trim());
-    var Zone2On1 = parseTod(tags[4].trim());
-    var Zone2Off1 = parseTod(tags[5].trim());
-    var Zone2On2 = parseTod(tags[6].trim());
-    var Zone2Off2 = parseTod(tags[7].trim());
-    var Zone3On1 = parseTod(tags[8].trim());
-    var Zone3Off1 = parseTod(tags[9].trim());
-    var Zone3On2 = parseTod(tags[10].trim());
-    var Zone3Off2 = parseTod(tags[11].trim());
-    var Zone4On1 = parseTod(tags[12].trim());
-    var Zone4Off1 = parseTod(tags[13].trim());
-    var Zone4On2 = parseTod(tags[14].trim());
-    var Zone4Off2 = parseTod(tags[15].trim());
-    var Zone5On1 = parseTod(tags[16].trim());
-    var Zone5Off1 = parseTod(tags[17].trim());
-    var Zone5On2 = parseTod(tags[18].trim());
-    var Zone5Off2 = parseTod(tags[19].trim());
-    var Zone6On1 = parseTod(tags[20].trim());
-    var Zone6Off1 = parseTod(tags[21].trim());
-    var Zone6On2 = parseTod(tags[22].trim());
-    var Zone6Off2 = parseTod(tags[23].trim());
-    var Zone1Enable = parseBool(tags[24].trim());
-    var Zone2Enable = parseBool(tags[25].trim());
-    var Zone3Enable = parseBool(tags[26].trim());
-    var Zone4Enable = parseBool(tags[27].trim());
-    var Zone5Enable = parseBool(tags[28].trim());
-    var Zone6Enable = parseBool(tags[29].trim());
-    var mondayEnable = parseBool(tags[30].trim());
-    var tuesdayEnable = parseBool(tags[31].trim());
-    var wednesdayEnable = parseBool(tags[32].trim());
-    var thursdayEnable = parseBool(tags[33].trim());
-    var fridayEnable = parseBool(tags[34].trim());
-    var saturdayEnable = parseBool(tags[35].trim());
-    var sundayEnable = parseBool(tags[36].trim());
+  $.get("ProgramTime.htm")
+    .done(function(data) {
+      const tags = data.split("\n");
+      var Zone1On1 = parseTod(tags[0].trim());
+      var Zone1Off1 = parseTod(tags[1].trim());
+      var Zone1On2 = parseTod(tags[2].trim());
+      var Zone1Off2 = parseTod(tags[3].trim());
+      var Zone2On1 = parseTod(tags[4].trim());
+      var Zone2Off1 = parseTod(tags[5].trim());
+      var Zone2On2 = parseTod(tags[6].trim());
+      var Zone2Off2 = parseTod(tags[7].trim());
+      var Zone3On1 = parseTod(tags[8].trim());
+      var Zone3Off1 = parseTod(tags[9].trim());
+      var Zone3On2 = parseTod(tags[10].trim());
+      var Zone3Off2 = parseTod(tags[11].trim());
+      var Zone4On1 = parseTod(tags[12].trim());
+      var Zone4Off1 = parseTod(tags[13].trim());
+      var Zone4On2 = parseTod(tags[14].trim());
+      var Zone4Off2 = parseTod(tags[15].trim());
+      var Zone5On1 = parseTod(tags[16].trim());
+      var Zone5Off1 = parseTod(tags[17].trim());
+      var Zone5On2 = parseTod(tags[18].trim());
+      var Zone5Off2 = parseTod(tags[19].trim());
+      var Zone6On1 = parseTod(tags[20].trim());
+      var Zone6Off1 = parseTod(tags[21].trim());
+      var Zone6On2 = parseTod(tags[22].trim());
+      var Zone6Off2 = parseTod(tags[23].trim());
+      var Zone1Enable = parseBool(tags[24].trim());
+      var Zone2Enable = parseBool(tags[25].trim());
+      var Zone3Enable = parseBool(tags[26].trim());
+      var Zone4Enable = parseBool(tags[27].trim());
+      var Zone5Enable = parseBool(tags[28].trim());
+      var Zone6Enable = parseBool(tags[29].trim());
+      var mondayEnable = parseBool(tags[30].trim());
+      var tuesdayEnable = parseBool(tags[31].trim());
+      var wednesdayEnable = parseBool(tags[32].trim());
+      var thursdayEnable = parseBool(tags[33].trim());
+      var fridayEnable = parseBool(tags[34].trim());
+      var saturdayEnable = parseBool(tags[35].trim());
+      var sundayEnable = parseBool(tags[36].trim());
 
-    $(".zone1 .on1-hours-render").text(Zone1On1.getHours());
-    $(".zone1 .on1-minutes-render").text(Zone1On1.getMinutes());
-    $(".zone1 .off1-hours-render").text(Zone1Off1.getHours());
-    $(".zone1 .off1-minutes-render").text(Zone1Off1.getMinutes());
-    $(".zone1 .on2-hours-render").text(Zone1On2.getHours());
-    $(".zone1 .on2-minutes-render").text(Zone1On2.getMinutes());
-    $(".zone1 .off2-hours-render").text(Zone1Off2.getHours());
-    $(".zone1 .off2-minutes-render").text(Zone1Off2.getMinutes());
+      $(".zone1 .on1-hours-render").text(Zone1On1.getHours());
+      $(".zone1 .on1-minutes-render").text(Zone1On1.getMinutes());
+      $(".zone1 .off1-hours-render").text(Zone1Off1.getHours());
+      $(".zone1 .off1-minutes-render").text(Zone1Off1.getMinutes());
+      $(".zone1 .on2-hours-render").text(Zone1On2.getHours());
+      $(".zone1 .on2-minutes-render").text(Zone1On2.getMinutes());
+      $(".zone1 .off2-hours-render").text(Zone1Off2.getHours());
+      $(".zone1 .off2-minutes-render").text(Zone1Off2.getMinutes());
 
-    $(".zone2 .on1-hours-render").text(Zone2On1.getHours());
-    $(".zone2 .on1-minutes-render").text(Zone2On1.getMinutes());
-    $(".zone2 .off1-hours-render").text(Zone2Off1.getHours());
-    $(".zone2 .off1-minutes-render").text(Zone2Off1.getMinutes());
-    $(".zone2 .on2-hours-render").text(Zone2On2.getHours());
-    $(".zone2 .on2-minutes-render").text(Zone2On2.getMinutes());
-    $(".zone2 .off2-hours-render").text(Zone2Off2.getHours());
-    $(".zone2 .off2-minutes-render").text(Zone2Off2.getMinutes());
+      $(".zone2 .on1-hours-render").text(Zone2On1.getHours());
+      $(".zone2 .on1-minutes-render").text(Zone2On1.getMinutes());
+      $(".zone2 .off1-hours-render").text(Zone2Off1.getHours());
+      $(".zone2 .off1-minutes-render").text(Zone2Off1.getMinutes());
+      $(".zone2 .on2-hours-render").text(Zone2On2.getHours());
+      $(".zone2 .on2-minutes-render").text(Zone2On2.getMinutes());
+      $(".zone2 .off2-hours-render").text(Zone2Off2.getHours());
+      $(".zone2 .off2-minutes-render").text(Zone2Off2.getMinutes());
 
-    $(".zone3 .on1-hours-render").text(Zone3On1.getHours());
-    $(".zone3 .on1-minutes-render").text(Zone3On1.getMinutes());
-    $(".zone3 .off1-hours-render").text(Zone3Off1.getHours());
-    $(".zone3 .off1-minutes-render").text(Zone3Off1.getMinutes());
-    $(".zone3 .on2-hours-render").text(Zone3On2.getHours());
-    $(".zone3 .on2-minutes-render").text(Zone3On2.getMinutes());
-    $(".zone3 .off2-hours-render").text(Zone3Off2.getHours());
-    $(".zone3 .off2-minutes-render").text(Zone3Off2.getMinutes());
+      $(".zone3 .on1-hours-render").text(Zone3On1.getHours());
+      $(".zone3 .on1-minutes-render").text(Zone3On1.getMinutes());
+      $(".zone3 .off1-hours-render").text(Zone3Off1.getHours());
+      $(".zone3 .off1-minutes-render").text(Zone3Off1.getMinutes());
+      $(".zone3 .on2-hours-render").text(Zone3On2.getHours());
+      $(".zone3 .on2-minutes-render").text(Zone3On2.getMinutes());
+      $(".zone3 .off2-hours-render").text(Zone3Off2.getHours());
+      $(".zone3 .off2-minutes-render").text(Zone3Off2.getMinutes());
 
-    $(".zone4 .on1-hours-render").text(Zone4On1.getHours());
-    $(".zone4 .on1-minutes-render").text(Zone4On1.getMinutes());
-    $(".zone4 .off1-hours-render").text(Zone4Off1.getHours());
-    $(".zone4 .off1-minutes-render").text(Zone4Off1.getMinutes());
-    $(".zone4 .on2-hours-render").text(Zone4On2.getHours());
-    $(".zone4 .on2-minutes-render").text(Zone4On2.getMinutes());
-    $(".zone4 .off2-hours-render").text(Zone4Off2.getHours());
-    $(".zone4 .off2-minutes-render").text(Zone4Off2.getMinutes());
+      $(".zone4 .on1-hours-render").text(Zone4On1.getHours());
+      $(".zone4 .on1-minutes-render").text(Zone4On1.getMinutes());
+      $(".zone4 .off1-hours-render").text(Zone4Off1.getHours());
+      $(".zone4 .off1-minutes-render").text(Zone4Off1.getMinutes());
+      $(".zone4 .on2-hours-render").text(Zone4On2.getHours());
+      $(".zone4 .on2-minutes-render").text(Zone4On2.getMinutes());
+      $(".zone4 .off2-hours-render").text(Zone4Off2.getHours());
+      $(".zone4 .off2-minutes-render").text(Zone4Off2.getMinutes());
 
-    $(".zone5 .on1-hours-render").text(Zone5On1.getHours());
-    $(".zone5 .on1-minutes-render").text(Zone5On1.getMinutes());
-    $(".zone5 .off1-hours-render").text(Zone5Off1.getHours());
-    $(".zone5 .off1-minutes-render").text(Zone5Off1.getMinutes());
-    $(".zone5 .on2-hours-render").text(Zone5On2.getHours());
-    $(".zone5 .on2-minutes-render").text(Zone5On2.getMinutes());
-    $(".zone5 .off2-hours-render").text(Zone5Off2.getHours());
-    $(".zone5 .off2-minutes-render").text(Zone5Off2.getMinutes());
+      $(".zone5 .on1-hours-render").text(Zone5On1.getHours());
+      $(".zone5 .on1-minutes-render").text(Zone5On1.getMinutes());
+      $(".zone5 .off1-hours-render").text(Zone5Off1.getHours());
+      $(".zone5 .off1-minutes-render").text(Zone5Off1.getMinutes());
+      $(".zone5 .on2-hours-render").text(Zone5On2.getHours());
+      $(".zone5 .on2-minutes-render").text(Zone5On2.getMinutes());
+      $(".zone5 .off2-hours-render").text(Zone5Off2.getHours());
+      $(".zone5 .off2-minutes-render").text(Zone5Off2.getMinutes());
 
-    $(".zone6 .on1-hours-render").text(Zone6On1.getHours());
-    $(".zone6 .on1-minutes-render").text(Zone6On1.getMinutes());
-    $(".zone6 .off1-hours-render").text(Zone6Off1.getHours());
-    $(".zone6 .off1-minutes-render").text(Zone6Off1.getMinutes());
-    $(".zone6 .on2-hours-render").text(Zone6On2.getHours());
-    $(".zone6 .on2-minutes-render").text(Zone6On2.getMinutes());
-    $(".zone6 .off2-hours-render").text(Zone6Off2.getHours());
-    $(".zone6 .off2-minutes-render").text(Zone6Off2.getMinutes());
-    //var log = JSON.stringify(tags[24])
-    $(".zone1 .enabled-render").text(Zone1Enable);
-    $(".zone2 .enabled-render").text(Zone2Enable);
-    $(".zone3 .enabled-render").text(Zone3Enable);
-    $(".zone4 .enabled-render").text(Zone4Enable);
-    $(".zone5 .enabled-render").text(Zone5Enable);
-    $(".zone6 .enabled-render").text(Zone6Enable);
+      $(".zone6 .on1-hours-render").text(Zone6On1.getHours());
+      $(".zone6 .on1-minutes-render").text(Zone6On1.getMinutes());
+      $(".zone6 .off1-hours-render").text(Zone6Off1.getHours());
+      $(".zone6 .off1-minutes-render").text(Zone6Off1.getMinutes());
+      $(".zone6 .on2-hours-render").text(Zone6On2.getHours());
+      $(".zone6 .on2-minutes-render").text(Zone6On2.getMinutes());
+      $(".zone6 .off2-hours-render").text(Zone6Off2.getHours());
+      $(".zone6 .off2-minutes-render").text(Zone6Off2.getMinutes());
+      //var log = JSON.stringify(tags[24])
+      $(".zone1 .enabled-render").text(Zone1Enable);
+      $(".zone2 .enabled-render").text(Zone2Enable);
+      $(".zone3 .enabled-render").text(Zone3Enable);
+      $(".zone4 .enabled-render").text(Zone4Enable);
+      $(".zone5 .enabled-render").text(Zone5Enable);
+      $(".zone6 .enabled-render").text(Zone6Enable);
 
-    $("#week-program-monday-render").text(mondayEnable);
-    $("#week-program-tuesday-render").text(tuesdayEnable);
-    $("#week-program-wednesday-render").text(wednesdayEnable);
-    $("#week-program-thursday-render").text(thursdayEnable);
-    $("#week-program-friday-render").text(fridayEnable);
-    $("#week-program-saturday-render").text(saturdayEnable);
-    $("#week-program-sunday-render").text(sundayEnable);
-  });
+      $("#week-program-monday-render").text(mondayEnable);
+      $("#week-program-tuesday-render").text(tuesdayEnable);
+      $("#week-program-wednesday-render").text(wednesdayEnable);
+      $("#week-program-thursday-render").text(thursdayEnable);
+      $("#week-program-friday-render").text(fridayEnable);
+      $("#week-program-saturday-render").text(saturdayEnable);
+      $("#week-program-sunday-render").text(sundayEnable);
+    })
+    .catch(function(error){
+      console.log("Failed to get data from PLC: " + error);
+    });
 }
-//read PLC tags and write to html
-function updateIO() {
-  console.log("Read IO Tags");
-  request = $.get("IO.htm", function(data) {
-    tags = data.split("\n");
-  });
-  request.done(function() {
-    show_on_off_state(tags[0].trim(), "#pump-on", "#pump-off", "#pump-invalid");
-    $("#water-pressure").text(parsePressureSpeed(tags[1].trim()));
-    $("#inverter-speed").text(parsePressureSpeed(tags[2].trim()));
-    show_on_off_state(
-      tags[3].trim(),
-      ".zone1 .valve-on",
-      "zone1 .valve-off",
-      ".zone1 .valve-invalid"
-    );
-    show_on_off_state(
-      tags[4].trim(),
-      ".zone2 .valve-on",
-      "zone2 .valve-off",
-      ".zone2 .valve-invalid"
-    );
-    show_on_off_state(
-      tags[5].trim(),
-      ".zone3 .valve-on",
-      "zone3 .valve-off",
-      ".zone3 .valve-invalid"
-    );
-    show_on_off_state(
-      tags[6].trim(),
-      ".zone4 .valve-on",
-      "zone4 .valve-off",
-      ".zone4 .valve-invalid"
-    );
-    show_on_off_state(
-      tags[7].trim(),
-      ".zone5 .valve-on",
-      "zone5 .valve-off",
-      ".zone5 .valve-invalid"
-    );
-    show_on_off_state(
-      tags[8].trim(),
-      ".zone6 .valve-on",
-      "zone6 .valve-off",
-      ".zone6 .valve-invalid"
-    );
-    $("#hour-counter-pump").text(tags[9].trim());
-    $(".zone1 .hour-counter-valve").text(tags[10].trim());
-    $(".zone2 .hour-counter-valve").text(tags[11].trim());
-    $(".zone3 .hour-counter-valve").text(tags[12].trim());
-    $(".zone4 .hour-counter-valve").text(tags[13].trim());
-    $(".zone5 .hour-counter-valve").text(tags[14].trim());
-    $(".zone6 .hour-counter-valve").text(tags[15].trim());
-    $("#local-command-render-pump").text(parseAutMan(tags[16].trim()));
-    $("#local-command-render-zone1").text(parseAutMan(tags[17].trim()));
-    $("#local-command-render-zone2").text(parseAutMan(tags[18].trim()));
-    $("#local-command-render-zone3").text(parseAutMan(tags[19].trim()));
-    $("#local-command-render-zone4").text(parseAutMan(tags[20].trim()));
-    $("#local-command-render-zone5").text(parseAutMan(tags[21].trim()));
-    $("#local-command-render-zone6").text(parseAutMan(tags[22].trim()));
-    show_alarm_state(
-      tags[23].trim(),
-      "#state-citcuit-breaker-image-ok",
-      "#state-citcuit-breaker-image-alarm",
-      "#state-citcuit-breaker-image-invalid"
-    );
-    show_alarm_state(
-      tags[24].trim(),
-      "#state-pressure-switch-image-ok",
-      "#state-pressure-switch-image-alarm",
-      "#state-pressure-switch-image-invalid"
-    );
-    show_alarm_state(
-      tags[25].trim(),
-      "#state-inverter-image-ok",
-      "#state-inverter-image-alarm",
-      "#state-inverter-image-invalid"
-    );
-    show_alarm_state(
-      tags[26].trim(),
-      "#state-pressure-sensor-image-ok",
-      "#state-pressure-sensor-image-alarm",
-      "#state-pressure-sensor-image-invalid"
-    );
-    show_alarm_state(
-      tags[27].trim(),
-      "#state-time-program-image-ok",
-      "#state-time-program-image-alarm",
-      "#state-time-program-image-invalid"
-    );
-    show_alarm_state(
-      tags[28].trim(),
-      "#state-communication-image-ok",
-      "#state-communication-image-alarm",
-      "#state-communication-image-invalid"
-    );
-  });
-}
-
 function getSettings() {
   console.log("read Settings");
   request = $.get("Settings.htm", function(data) {
@@ -315,6 +218,11 @@ function parseAutMan(bool) {
 function parseDate(date) {
   var d = date.substr(2);
   var comp = d.split("-");
+  if (comp.length != 3 ||
+    $.isNumeric(comp[0]) == false ||
+    $.isNumeric(comp[1]) == false ||
+    $.isNumeric(comp[2]) == false)
+    return "NaN";
   return comp[2] + "/" + comp[1] + "/" + comp[0];
 }
 
@@ -438,6 +346,32 @@ function buildDateForPLC(date) {
   return "D#" + split[2] + "-" + split[1] + "-" + split[0];
 }
 
+function sendPressureSpeedToPLC(pressure, speed, valvenumber)
+{
+  if($.isNumeric(pressure) == false && pressure != '')
+  {
+      alert ("Il campo Pressione dev'essere di formato numerico");
+      return;
+  }
+
+  if($.isNumeric(speed) == false && speed != '')
+  {
+      alert ("Il campo Velocità dev'essere di formato numerico");
+      return;
+  } 
+  if (pressure == '' && speed == '')
+      return;
+  var tags = {};
+  const pressureTag = '"WebDataIn".PumpSetpoints.PressureZone' + (valvenumber + 1);
+  const speedTag =  '"WebDataIn".PumpSetpoints.SpeedZone' + (valvenumber + 1)
+  if (pressure != '')
+    tags[pressureTag] = pressure;
+  if (speed != '')
+    tags[speedTag] = speed;
+    console.log(tags);
+  writeTagsToPLC(plcURL, tags, writePLCFail, writePLCSuccess);  
+}
+
 function commnadValveManually(valve, state) {
   var tag = [
     '"WebDataIn".ManualEnable.Valve1',
@@ -458,12 +392,12 @@ $(document).ready(function() {
 
   //load html modules
   $("#week-program").load('elements/weekcheckbox/weekcheckbox.htm');
-  loadMonitorValveModule(".zone1.monitor", "Zona 1", "img/valve.png");	
-  loadMonitorValveModule(".zone2.monitor", "Zona 2", "img/valve.png");	
-  loadMonitorValveModule(".zone3.monitor", "Zona 3", "img/valve.png");	
-  loadMonitorValveModule(".zone4.monitor", "Zona 4", "img/valve.png");	
-  loadMonitorValveModule(".zone5.monitor", "Zona 5", "img/valve.png");	
-  loadMonitorValveModule(".zone6.monitor", "Zona 6", "img/endvalve.png");							
+  loadMonitorValveModule(".zone1.monitor", "Zona 1", "img/valve.png", 0);	
+  loadMonitorValveModule(".zone2.monitor", "Zona 2", "img/valve.png", 1);	
+  loadMonitorValveModule(".zone3.monitor", "Zona 3", "img/valve.png", 2);	
+  loadMonitorValveModule(".zone4.monitor", "Zona 4", "img/valve.png", 3);	
+  loadMonitorValveModule(".zone5.monitor", "Zona 5", "img/valve.png", 4);	
+  loadMonitorValveModule(".zone6.monitor", "Zona 6", "img/endvalve.png", 5);							
 
   loadTimeProgramSetModule(".zone1.time-set", "Zona 1");
   loadTimeProgramSetModule(".zone2.time-set", "Zona 2");
@@ -484,16 +418,22 @@ $(document).ready(function() {
   $("#time-program-page").hide();
   $("#settings-page").hide();
   $("#button-monitor-page").click(function(){
+    if (getIOState == false)
+      runGetIO();
     $("#monitor-page").show();
     $("#time-program-page").hide();
     $("#settings-page").hide();   
   });
   $("#button-time-program-page").click(function(){
+    stopGetIO();
+    getPrograms();
     $("#monitor-page").hide();
     $("#time-program-page").show();
     $("#settings-page").hide();   
   });
   $("#button-settings-page").click(function(){
+    stopGetIO();
+    getSettings();
     $("#monitor-page").hide();
     $("#time-program-page").hide();
     $("#settings-page").show();   
@@ -501,6 +441,7 @@ $(document).ready(function() {
 
 //Start reading time
   runGetTime();
+  runGetIO();
 
   //----------------------LOAD MANUAL BUTTONS--------------------------
   
@@ -534,36 +475,6 @@ $(document).ready(function() {
     });
   });
 
-  //load tabs and set events
-  /*
-  $(function() {
-    var $tabs = $("#tabs").tabs({
-      create: function(e, tab) {
-        //on create control set activeTab to 0 (by default the tab start in page 0)
-        activeTab = 0;
-        IOintervalId = setInterval(updateIO, 1000); //Start also monitor activity
-      },
-      beforeActivate: function(e, tab) {
-        //When activate another tab fire this event
-
-        activeTab = tab.newTab.index(); //get the tab index
-        if (activeTab == 0) {
-          IOintervalId = setInterval(updateIO, 1000); //if in the monitor tab, activate monitor function
-          console.log("set");
-        } else {
-          clearInterval(IOintervalId); //else deactivate monitor function
-          console.log("clear");
-        }
-        if (activeTab == 1) {
-          getPrograms();
-        }
-        if (activeTab == 2) {
-          getSettings();
-        }
-      }
-    });
-  });
-  */
   //----------------------CONFIRM WEEK PROGRAM--------------------------
   $("#button-confirm-week-program").click(function() {
     var monday = $("#monday-checkbox").is(":checked") ? "1" : "0";
@@ -584,268 +495,6 @@ $(document).ready(function() {
     };
     writeTagsToPLC(plcURL, tags, writePLCFail, delayedGetPLCPrograms);
   });
-/*
-  $("#button-confirm-date-program").click(function() {
-    var startDate = $("#start-date-program").val();
-    var endDate = $("#end-date-program").val();
-    console.log(startDate);
-    console.log(endDate);
-    var resultParseStartDate = validateDate(startDate);
-    var resultParseEndDate = validateDate(endDate);
-    if (resultParseStartDate === "valid") {
-      if (validateDate(endDate) === "valid") {
-        if (moment(endDate).isBefore(startDate) == true) {
-          alert(
-            "La data di inizio programma deve essere antecedente la data di fine"
-          );
-          return;
-        }
-        var startDateForPLC = buildDateForPLC(startDate);
-        var endDateForPLC = buildDateForPLC(endDate);
-        var tags = {
-          '"WebDataIn".ProgramTime.DateStartProgram': startDateForPLC,
-          '"WebDataIn".ProgramTime.DateEndProgram': endDateForPLC
-        };
-        console.log(tags);
-        writeTagsToPLC(plcURL, tags, writePLCFail, delayedGetPLCPrograms);
-      } else alert(resultParseEndDate);
-      return;
-    } else {
-      alert(resultParseStartDate);
-      return;
-    }
-  });
-*/
-  $(".button-confirm-program").click(function() {
-    //var zone = $(this).closest("tr").attr("class");
-    //console.log(zone);
-    console.log("button-confirm-program pressed");
-    var validationResult = validateZoneTimeProgram(
-      $("#zone1-on1-hours").val(),
-      $("#zone1-on1-minutes").val(),
-      $("#zone1-off1-hours").val(),
-      $("#zone1-off1-minutes").val(),
-      $("#zone1-on2-hours").val(),
-      $("#zone1-on2-minutes").val(),
-      $("#zone1-off2-hours").val(),
-      $("#zone1-off2-minutes").val()
-    );
-    if (validationResult === "valid") {
-      var result = buildTodForPLC(
-        $("#zone1-on1-hours").val(),
-        $("#zone1-on1-minutes").val(),
-        $("#zone1-off1-hours").val(),
-        $("#zone1-off1-minutes").val(),
-        $("#zone1-on2-hours").val(),
-        $("#zone1-on2-minutes").val(),
-        $("#zone1-off2-hours").val(),
-        $("#zone1-off2-minutes").val()
-      );
-      console.log($("#zone1-enabled").is(":checked") ? 1 : 0);
-      var tags = {
-        '"WebDataIn".ProgramTime.Zone1On1': result.PLCTodOn1,
-        '"WebDataIn".ProgramTime.Zone1Off1': result.PLCTodOff1,
-        '"WebDataIn".ProgramTime.Zone1On2': result.PLCTodOn2,
-        '"WebDataIn".ProgramTime.Zone1Off2': result.PLCTodOff2,
-        '"WebDataIn".ProgramTime.Zone1Enabled': $("#zone1-enabled").is(
-          ":checked"
-        )
-          ? 1
-          : 0
-      };
-      writeTagsToPLC(plcURL, tags, writePLCFail, delayedGetPLCPrograms);
-    } else alert(validationResult);
-  });
-
-  $("#button-confirm-zone2-program").click(function() {
-    var validationResult = validateZoneTimeProgram(
-      $("#zone2-on1-hours").val(),
-      $("#zone2-on1-minutes").val(),
-      $("#zone2-off1-hours").val(),
-      $("#zone2-off1-minutes").val(),
-      $("#zone2-on2-hours").val(),
-      $("#zone2-on2-minutes").val(),
-      $("#zone2-off2-hours").val(),
-      $("#zone2-off2-minutes").val()
-    );
-    if (validationResult === "valid") {
-      var result = buildTodForPLC(
-        $("#zone2-on1-hours").val(),
-        $("#zone2-on1-minutes").val(),
-        $("#zone2-off1-hours").val(),
-        $("#zone2-off1-minutes").val(),
-        $("#zone2-on2-hours").val(),
-        $("#zone2-on2-minutes").val(),
-        $("#zone2-off2-hours").val(),
-        $("#zone2-off2-minutes").val()
-      );
-      console.log($("#zone2-enabled").is(":checked") ? 1 : 0);
-      var tags = {
-        '"WebDataIn".ProgramTime.Zone2On1': result.PLCTodOn1,
-        '"WebDataIn".ProgramTime.Zone2Off1': result.PLCTodOff1,
-        '"WebDataIn".ProgramTime.Zone2On2': result.PLCTodOn2,
-        '"WebDataIn".ProgramTime.Zone2Off2': result.PLCTodOff2,
-        '"WebDataIn".ProgramTime.Zone2Enabled': $("#zone2-enabled").is(
-          ":checked"
-        )
-          ? 1
-          : 0
-      };
-      writeTagsToPLC(plcURL, tags, writePLCFail, delayedGetPLCPrograms);
-    } else alert(validationResult);
-  });
-
-  $("#button-confirm-zone3-program").click(function() {
-    var validationResult = validateZoneTimeProgram(
-      $("#zone3-on1-hours").val(),
-      $("#zone3-on1-minutes").val(),
-      $("#zone3-off1-hours").val(),
-      $("#zone3-off1-minutes").val(),
-      $("#zone3-on2-hours").val(),
-      $("#zone3-on2-minutes").val(),
-      $("#zone3-off2-hours").val(),
-      $("#zone3-off2-minutes").val()
-    );
-    if (validationResult === "valid") {
-      var result = buildTodForPLC(
-        $("#zone3-on1-hours").val(),
-        $("#zone3-on1-minutes").val(),
-        $("#zone3-off1-hours").val(),
-        $("#zone3-off1-minutes").val(),
-        $("#zone3-on2-hours").val(),
-        $("#zone3-on2-minutes").val(),
-        $("#zone3-off2-hours").val(),
-        $("#zone3-off2-minutes").val()
-      );
-      console.log($("#zone3-enabled").is(":checked") ? 1 : 0);
-      var tags = {
-        '"WebDataIn".ProgramTime.Zone3On1': result.PLCTodOn1,
-        '"WebDataIn".ProgramTime.Zone3Off1': result.PLCTodOff1,
-        '"WebDataIn".ProgramTime.Zone3On2': result.PLCTodOn2,
-        '"WebDataIn".ProgramTime.Zone3Off2': result.PLCTodOff2,
-        '"WebDataIn".ProgramTime.Zone3Enabled': $("#zone3-enabled").is(
-          ":checked"
-        )
-          ? 1
-          : 0
-      };
-      writeTagsToPLC(plcURL, tags, writePLCFail, delayedGetPLCPrograms);
-    } else alert(validationResult);
-  });
-
-  $("#button-confirm-zone4-program").click(function() {
-    var validationResult = validateZoneTimeProgram(
-      $("#zone4-on1-hours").val(),
-      $("#zone4-on1-minutes").val(),
-      $("#zone4-off1-hours").val(),
-      $("#zone4-off1-minutes").val(),
-      $("#zone4-on2-hours").val(),
-      $("#zone4-on2-minutes").val(),
-      $("#zone4-off2-hours").val(),
-      $("#zone4-off2-minutes").val()
-    );
-    if (validationResult === "valid") {
-      var result = buildTodForPLC(
-        $("#zone4-on1-hours").val(),
-        $("#zone4-on1-minutes").val(),
-        $("#zone4-off1-hours").val(),
-        $("#zone4-off1-minutes").val(),
-        $("#zone4-on2-hours").val(),
-        $("#zone4-on2-minutes").val(),
-        $("#zone4-off2-hours").val(),
-        $("#zone4-off2-minutes").val()
-      );
-      console.log($("#zone4-enabled").is(":checked") ? 1 : 0);
-      var tags = {
-        '"WebDataIn".ProgramTime.Zone4On1': result.PLCTodOn1,
-        '"WebDataIn".ProgramTime.Zone4Off1': result.PLCTodOff1,
-        '"WebDataIn".ProgramTime.Zone4On2': result.PLCTodOn2,
-        '"WebDataIn".ProgramTime.Zone4Off2': result.PLCTodOff2,
-        '"WebDataIn".ProgramTime.Zone4Enabled': $("#zone4-enabled").is(
-          ":checked"
-        )
-          ? 1
-          : 0
-      };
-      writeTagsToPLC(plcURL, tags, writePLCFail, delayedGetPLCPrograms);
-    } else alert(validationResult);
-  });
-
-  $("#button-confirm-zone5-program").click(function() {
-    var validationResult = validateZoneTimeProgram(
-      $("#zone5-on1-hours").val(),
-      $("#zone5-on1-minutes").val(),
-      $("#zone5-off1-hours").val(),
-      $("#zone5-off1-minutes").val(),
-      $("#zone5-on2-hours").val(),
-      $("#zone5-on2-minutes").val(),
-      $("#zone5-off2-hours").val(),
-      $("#zone5-off2-minutes").val()
-    );
-    if (validationResult === "valid") {
-      var result = buildTodForPLC(
-        $("#zone5-on1-hours").val(),
-        $("#zone5-on1-minutes").val(),
-        $("#zone5-off1-hours").val(),
-        $("#zone5-off1-minutes").val(),
-        $("#zone5-on2-hours").val(),
-        $("#zone5-on2-minutes").val(),
-        $("#zone5-off2-hours").val(),
-        $("#zone5-off2-minutes").val()
-      );
-      console.log($("#zone5-enabled").is(":checked") ? 1 : 0);
-      var tags = {
-        '"WebDataIn".ProgramTime.Zone5On1': result.PLCTodOn1,
-        '"WebDataIn".ProgramTime.Zone5Off1': result.PLCTodOff1,
-        '"WebDataIn".ProgramTime.Zone5On2': result.PLCTodOn2,
-        '"WebDataIn".ProgramTime.Zone5Off2': result.PLCTodOff2,
-        '"WebDataIn".ProgramTime.Zone5Enabled': $("#zone5-enabled").is(
-          ":checked"
-        )
-          ? 1
-          : 0
-      };
-      writeTagsToPLC(plcURL, tags, writePLCFail, delayedGetPLCPrograms);
-    } else alert(validationResult);
-  });
-
-  $("#button-confirm-zone6-program").click(function() {
-    var validationResult = validateZoneTimeProgram(
-      $("#zone6-on1-hours").val(),
-      $("#zone6-on1-minutes").val(),
-      $("#zone6-off1-hours").val(),
-      $("#zone6-off1-minutes").val(),
-      $("#zone6-on2-hours").val(),
-      $("#zone6-on2-minutes").val(),
-      $("#zone6-off2-hours").val(),
-      $("#zone6-off2-minutes").val()
-    );
-    if (validationResult === "valid") {
-      var result = buildTodForPLC(
-        $("#zone6-on1-hours").val(),
-        $("#zone6-on1-minutes").val(),
-        $("#zone6-off1-hours").val(),
-        $("#zone6-off1-minutes").val(),
-        $("#zone6-on2-hours").val(),
-        $("#zone6-on2-minutes").val(),
-        $("#zone6-off2-hours").val(),
-        $("#zone6-off2-minutes").val()
-      );
-      console.log($("#zone6-enabled").is(":checked") ? 1 : 0);
-      var tags = {
-        '"WebDataIn".ProgramTime.Zone6On1': result.PLCTodOn1,
-        '"WebDataIn".ProgramTime.Zone6Off1': result.PLCTodOff1,
-        '"WebDataIn".ProgramTime.Zone6On2': result.PLCTodOn2,
-        '"WebDataIn".ProgramTime.Zone6Off2': result.PLCTodOff2,
-        '"WebDataIn".ProgramTime.Zone6Enabled': $("#zone6-enabled").is(
-          ":checked"
-        )
-          ? 1
-          : 0
-      };
-      writeTagsToPLC(plcURL, tags, writePLCFail, delayedGetPLCPrograms);
-    } else alert(validationResult);
-  });
 
   //--------------------------SETTINGS BUTTONS------------------------------
 
@@ -860,6 +509,7 @@ $(document).ready(function() {
     };
     writeTagsToPLC(plcURL, tags, writePLCFail, delayedGetPLCSettings);
   });
+  
   $("#button-date-time-set-submit").click(function() {
     var date = $("#date-set").val();
     var time = $("#time-set-hours").val() + ":" + $("#time-set-minutes").val();
