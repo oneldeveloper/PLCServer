@@ -469,13 +469,14 @@ $(document).ready(function() {
 
   $("#week-program").html(elements.weekcheckbox);
 /*
-    loadMonitorValveModule(".zone1.monitor", "Zona 1", "img/endvalve.png");	
-    loadMonitorValveModule(".zone2.monitor", "Zona 2", "img/endvalve.png");	
-    loadMonitorValveModule(".zone3.monitor", "Zona 3", "img/endvalve.png");	
-    loadMonitorValveModule(".zone4.monitor", "Zona 4", "img/endvalve.png");	
-    loadMonitorValveModule(".zone5.monitor", "Zona 5", "img/endvalve.png");	
-    loadMonitorValveModule(".zone6.monitor", "Zona 6", "img/endvalve.png");							
-
+  loadMonitorValveModule(".zone1.monitor", "Zona 1", "img/endvalve.png");	
+  loadMonitorValveModule(".zone2.monitor", "Zona 2", "img/endvalve.png");	
+  loadMonitorValveModule(".zone3.monitor", "Zona 3", "img/endvalve.png");	
+  loadMonitorValveModule(".zone4.monitor", "Zona 4", "img/endvalve.png");	
+  loadMonitorValveModule(".zone5.monitor", "Zona 5", "img/endvalve.png");	
+  loadMonitorValveModule(".zone6.monitor", "Zona 6", "img/endvalve.png");		
+  */					
+/*
     loadTimeProgramSetModule(".zone1.time-set", "Zona 1");
     loadTimeProgramSetModule(".zone2.time-set", "Zona 2");
     loadTimeProgramSetModule(".zone3.time-set", "Zona 3");
