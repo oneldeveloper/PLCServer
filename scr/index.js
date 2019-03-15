@@ -1,3 +1,4 @@
+/*
 import $ from "jquery";
 
 import loadMonitorValveModule from "./loadHTMLmodules";
@@ -10,6 +11,7 @@ window.$ = $;
 window.loadMonitorValveModule = loadMonitorValveModule;
 window.loadTimeProgramSetModule = loadTimeProgramSetModule;
 window.loadTimeProgramSummaryModule = loadTimeProgramSummaryModule;
+*/
 
 //var plcURL = "localhost"
 var plcURL = "http://172.19.8.10/awp/Irrigazione/Index.html";
@@ -465,40 +467,56 @@ function commnadValveManually(valve, state) {
 //---------------------------------ENTRY POINT ----------------------------------------------
 $(document).ready(function() {
 
+  //load html modules
   $("#week-program").load('elements/weekcheckbox/weekcheckbox.htm');
-/*
-    loadMonitorValveModule(".zone1.monitor", "Zona 1", "img/endvalve.png");	
-    loadMonitorValveModule(".zone2.monitor", "Zona 2", "img/endvalve.png");	
-    loadMonitorValveModule(".zone3.monitor", "Zona 3", "img/endvalve.png");	
-    loadMonitorValveModule(".zone4.monitor", "Zona 4", "img/endvalve.png");	
-    loadMonitorValveModule(".zone5.monitor", "Zona 5", "img/endvalve.png");	
-    loadMonitorValveModule(".zone6.monitor", "Zona 6", "img/endvalve.png");							
+  loadMonitorValveModule(".zone1.monitor", "Zona 1", "img/valve.png");	
+  loadMonitorValveModule(".zone2.monitor", "Zona 2", "img/valve.png");	
+  loadMonitorValveModule(".zone3.monitor", "Zona 3", "img/valve.png");	
+  loadMonitorValveModule(".zone4.monitor", "Zona 4", "img/valve.png");	
+  loadMonitorValveModule(".zone5.monitor", "Zona 5", "img/valve.png");	
+  loadMonitorValveModule(".zone6.monitor", "Zona 6", "img/endvalve.png");							
 
-    loadTimeProgramSetModule(".zone1.time-set", "Zona 1");
-    loadTimeProgramSetModule(".zone2.time-set", "Zona 2");
-    loadTimeProgramSetModule(".zone3.time-set", "Zona 3");
-    loadTimeProgramSetModule(".zone4.time-set", "Zona 4");
-    loadTimeProgramSetModule(".zone5.time-set", "Zona 5");
-    loadTimeProgramSetModule(".zone6.time-set", "Zona 6");
+  loadTimeProgramSetModule(".zone1.time-set", "Zona 1");
+  loadTimeProgramSetModule(".zone2.time-set", "Zona 2");
+  loadTimeProgramSetModule(".zone3.time-set", "Zona 3");
+  loadTimeProgramSetModule(".zone4.time-set", "Zona 4");
+  loadTimeProgramSetModule(".zone5.time-set", "Zona 5");
+  loadTimeProgramSetModule(".zone6.time-set", "Zona 6");
 
-    loadTimeProgramSummaryModule(".zone1.time-summary", "Zona 1");
-    loadTimeProgramSummaryModule(".zone2.time-summary", "Zona 2");
-    loadTimeProgramSummaryModule(".zone3.time-summary", "Zona 3");
-    loadTimeProgramSummaryModule(".zone4.time-summary", "Zona 4");
-    loadTimeProgramSummaryModule(".zone5.time-summary", "Zona 5");
-    loadTimeProgramSummaryModule(".zone6.time-summary", "Zona 6");						
-*/
-    $(".zone1.monitor").text("testo di prova");
-  //var tags = [];
-  let activeTab = 0;
-  let IOintervalId = 0;
-  //let DateTimeId = setInterval(getActualTime, 10000);
+  loadTimeProgramSummaryModule(".zone1.time-summary", "Zona 1");
+  loadTimeProgramSummaryModule(".zone2.time-summary", "Zona 2");
+  loadTimeProgramSummaryModule(".zone3.time-summary", "Zona 3");
+  loadTimeProgramSummaryModule(".zone4.time-summary", "Zona 4");
+  loadTimeProgramSummaryModule(".zone5.time-summary", "Zona 5");
+  loadTimeProgramSummaryModule(".zone6.time-summary", "Zona 6");		
+
+
+
+  //initialize page view and configure buttons to navigate
+  $("#monitor-page").show();
+  $("#time-program-page").hide();
+  $("#settings-page").hide();
+  $("#button-monitor-page").click(function(){
+    $("#monitor-page").show();
+    $("#time-program-page").hide();
+    $("#settings-page").hide();   
+  });
+  $("#button-time-program-page").click(function(){
+    $("#monitor-page").hide();
+    $("#time-program-page").show();
+    $("#settings-page").hide();   
+  });
+  $("#button-settings-page").click(function(){
+    $("#monitor-page").hide();
+    $("#time-program-page").hide();
+    $("#settings-page").show();   
+  });
 
   $.ajaxSetup({ cache: false });
 
   //----------------------LOAD MANUAL BUTTONS--------------------------
-  /*
-  (function() {
+  
+  $(function() {
     $("#manual-enable").load("elements/toggleswitch.htm", function() {
       $("#manual-enable .toggleswitch").bind("change", function() {
         if ($(this).is(":checked")) {
@@ -514,8 +532,9 @@ $(document).ready(function() {
         }
       });
     });
-  })();
-  (function() {
+  });
+
+  $(function() {
     $("#parameters-enable").load("elements/toggleswitch.htm", function() {
       $("#parameters-enable .toggleswitch").bind("change", function() {
         if ($(this).is(":checked")) {
@@ -525,8 +544,8 @@ $(document).ready(function() {
         }
       });
     });
-  })();
-*/
+  });
+
   //load tabs and set events
   /*
   $(function() {
