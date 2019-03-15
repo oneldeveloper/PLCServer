@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+export default `<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html><head><meta content="text/html; charset=ISO-8859-1" http-equiv="content-type"><title>aa</title></head><body><span style="color: black;"></span>
 <table style="text-align: left; width: 80%;" border="0" cellpadding="0" cellspacing="0">
   <tbody>
@@ -15,4 +15,4 @@
 <span style="color: black;"></span>
   <br>
 
-</body></html>
+</body></html>`;

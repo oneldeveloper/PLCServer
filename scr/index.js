@@ -6,6 +6,8 @@ import {
   loadTimeProgramSummaryModule
 } from "./loadTimeProgram";
 
+import * as elements from '../elements';
+
 window.$ = $;
 window.loadMonitorValveModule = loadMonitorValveModule;
 window.loadTimeProgramSetModule = loadTimeProgramSetModule;
@@ -465,7 +467,7 @@ function commnadValveManually(valve, state) {
 //---------------------------------ENTRY POINT ----------------------------------------------
 $(document).ready(function() {
 
-  $("#week-program").load('elements/weekcheckbox/weekcheckbox.htm');
+  $("#week-program").html(elements.weekcheckbox);
 /*
     loadMonitorValveModule(".zone1.monitor", "Zona 1", "img/endvalve.png");	
     loadMonitorValveModule(".zone2.monitor", "Zona 2", "img/endvalve.png");	

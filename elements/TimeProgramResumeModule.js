@@ -1,4 +1,4 @@
-<td style="vertical-align: middle; text-align: center;">
+export default `<td style="vertical-align: middle; text-align: center;">
     <label class="zone-name"></label>
     </td>
     <td style="vertical-align: middle; text-align: center;">
@@ -18,4 +18,4 @@
     </td>
     <td style="vertical-align: middle; text-align: center;">
         <label class="enabled-render" ></label>
-</td>
+</td>`;

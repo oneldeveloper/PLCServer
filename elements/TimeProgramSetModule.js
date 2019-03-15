@@ -1,4 +1,4 @@
-    
+export default `    
     <td style="vertical-align: middle; text-align: center;">
         <label class="zone-name"></label>
     </td>
@@ -22,4 +22,4 @@
     </td>
     <td style="vertical-align: middle; text-align: center;">
         <button class="button-confirm-program" class="ui-button">Conferma</button> 
-    </td>
+    </td>`;

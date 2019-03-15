@@ -1,4 +1,4 @@
-<div>
+export default `<div>
     <label class="switchlabel">Lunedì</label> 
     <label class="switch" >
         <input class="toggleswitch" id="monday-checkbox" type="checkbox">
@@ -41,4 +41,4 @@
         <span class="slider round"></span>            
     </label>
 </div>
-    
+    `;

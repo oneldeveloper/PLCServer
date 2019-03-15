@@ -1,4 +1,4 @@
-<td style="vertical-align: center; width: 182px;">
+export default `<td style="vertical-align: center; width: 182px;">
 	<img class="item-image" style="border: 0px solid ; width: 200px; height: 130px;" align="middle" hspace="0" vspace="0">
 </td>
 <td style="vertical-align: center; text-align: center;">
@@ -24,4 +24,4 @@
 		<input class="speed-setting" size="1" name="speed-setting">
 		<label>Hz</label> 	
 	</div>
-</td>
+</td>`;
