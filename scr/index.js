@@ -245,15 +245,14 @@ function getSettings() {
 
 function getActualTime() {
   console.log("Read time");
-  request = $.get("ActualTime.htm", function(data) {
-    tags = data.split("\n");
-  });
-  request.done(function() {
-    var date = parseDate(tags[0]);
-    var time = parseTod(tags[1]);
-    $("#actual-date-time").text(
-      date + " - " + time.getHours() + ":" + time.getMinutes()
-    );
+  $.get("ActualTime.htm")
+    .done(function(data) {
+      const tags = data.split("\n");
+      var date = parseDate(tags[0]);
+      var time = parseTod(tags[1]);
+      $("#actual-date-time").text(date + " - " + time.getHours() + ":" + time.getMinutes())})
+    .catch(function(){
+        console.log("Failed to get time from PLC");
   });
 }
 
@@ -366,16 +365,7 @@ function show_alarm_state(state, ok, alarm, invalid) {
 }
 
 //-------------------------------- VALIDATE DATA FOR PLC --------------------------------------
-function validateZoneTimeProgram(
-  on1_h,
-  on1_m,
-  off1_h,
-  off1_m,
-  on2_h,
-  on2_m,
-  off2_h,
-  off2_m
-) {
+function validateZoneTimeProgram(on1_h, on1_m, off1_h, off1_m, on2_h, on2_m, off2_h, off2_m) {
   var result1 = validateTimeMessage(on1_h, on1_m, off1_h, off1_m);
   var result2 = validateTimeMessage(on2_h, on2_m, off2_h, off2_m);
   if (result1 === "empty")
@@ -436,16 +426,7 @@ function validateDate(date) {
 }
 
 //--------------------------------- PREPARE DATA FOR PLC ---------------------------------------
-function buildTodForPLC(
-  on1_h,
-  on1_m,
-  off1_h,
-  off1_m,
-  on2_h,
-  on2_m,
-  off2_h,
-  off2_m
-) {
+function buildTodForPLC( on1_h, on1_m, off1_h, off1_m, on2_h, on2_m, off2_h, off2_m) {
   var on1 = new Date(0, 0, 0, on1_h, on1_m, 0, 0);
   var off1 = new Date(0, 0, 0, off1_h, off1_m, 0, 0);
   var on2 = new Date(0, 0, 0, on2_h, on2_m, 0, 0);
@@ -484,13 +465,15 @@ function commnadValveManually(valve, state) {
 //---------------------------------ENTRY POINT ----------------------------------------------
 $(document).ready(function() {
 
+  $("#week-program").load('elements/weekcheckbox/weekcheckbox.htm');
+/*
     loadMonitorValveModule(".zone1.monitor", "Zona 1", "img/endvalve.png");	
     loadMonitorValveModule(".zone2.monitor", "Zona 2", "img/endvalve.png");	
     loadMonitorValveModule(".zone3.monitor", "Zona 3", "img/endvalve.png");	
     loadMonitorValveModule(".zone4.monitor", "Zona 4", "img/endvalve.png");	
     loadMonitorValveModule(".zone5.monitor", "Zona 5", "img/endvalve.png");	
     loadMonitorValveModule(".zone6.monitor", "Zona 6", "img/endvalve.png");							
-    $("#week-program").load('elements/weekcheckbox/weekcheckbox.htm');
+
     loadTimeProgramSetModule(".zone1.time-set", "Zona 1");
     loadTimeProgramSetModule(".zone2.time-set", "Zona 2");
     loadTimeProgramSetModule(".zone3.time-set", "Zona 3");
@@ -504,73 +487,19 @@ $(document).ready(function() {
     loadTimeProgramSummaryModule(".zone4.time-summary", "Zona 4");
     loadTimeProgramSummaryModule(".zone5.time-summary", "Zona 5");
     loadTimeProgramSummaryModule(".zone6.time-summary", "Zona 6");						
-
+*/
+    $(".zone1.monitor").text("testo di prova");
   //var tags = [];
-  var activeTab = 0;
-  var IOintervalId = 0;
-  var DateTimeId = setInterval(getActualTime, 10000);
+  let activeTab = 0;
+  let IOintervalId = 0;
+  //let DateTimeId = setInterval(getActualTime, 10000);
 
   $.ajaxSetup({ cache: false });
 
-  $(function() {
-    $.datepicker.regional.it = {
-      closeText: "Chiudi",
-      prevText: "&#x3C;Prec",
-      nextText: "Succ&#x3E;",
-      currentText: "Oggi",
-      monthNames: [
-        "Gennaio",
-        "Febbraio",
-        "Marzo",
-        "Aprile",
-        "Maggio",
-        "Giugno",
-        "Luglio",
-        "Agosto",
-        "Settembre",
-        "Ottobre",
-        "Novembre",
-        "Dicembre"
-      ],
-      monthNamesShort: [
-        "Gen",
-        "Feb",
-        "Mar",
-        "Apr",
-        "Mag",
-        "Giu",
-        "Lug",
-        "Ago",
-        "Set",
-        "Ott",
-        "Nov",
-        "Dic"
-      ],
-      dayNames: [
-        "Domenica",
-        "LunedÃ¬",
-        "MartedÃ¬",
-        "MercoledÃ¬",
-        "GiovedÃ¬",
-        "VenerdÃ¬",
-        "Sabato"
-      ],
-      dayNamesShort: ["Dom", "Lun", "Mar", "Mer", "Gio", "Ven", "Sab"],
-      dayNamesMin: ["Do", "Lu", "Ma", "Me", "Gi", "Ve", "Sa"],
-      weekHeader: "Sm",
-      dateFormat: "dd/mm/yy",
-      firstDay: 1,
-      isRTL: false,
-      showMonthAfterYear: false,
-      yearSuffix: ""
-    };
-    $.datepicker.setDefaults($.datepicker.regional.it);
-    $("#date-set").datepicker({ dateFormat: "dd/mm/yy" });
-  });
-
   //----------------------LOAD MANUAL BUTTONS--------------------------
-  $(function() {
-    $("#manual-enable").load("toggleswitch.htm", function() {
+  /*
+  (function() {
+    $("#manual-enable").load("elements/toggleswitch.htm", function() {
       $("#manual-enable .toggleswitch").bind("change", function() {
         if ($(this).is(":checked")) {
           $(".manual-valve").show();
@@ -585,9 +514,9 @@ $(document).ready(function() {
         }
       });
     });
-  });
-  $(function() {
-    $("#parameters-enable").load("toggleswitch.htm", function() {
+  })();
+  (function() {
+    $("#parameters-enable").load("elements/toggleswitch.htm", function() {
       $("#parameters-enable .toggleswitch").bind("change", function() {
         if ($(this).is(":checked")) {
           $(".manual-parameters").show();
@@ -596,9 +525,10 @@ $(document).ready(function() {
         }
       });
     });
-  });
-
+  })();
+*/
   //load tabs and set events
+  /*
   $(function() {
     var $tabs = $("#tabs").tabs({
       create: function(e, tab) {
@@ -626,6 +556,7 @@ $(document).ready(function() {
       }
     });
   });
+  */
   //----------------------CONFIRM WEEK PROGRAM--------------------------
   $("#button-confirm-week-program").click(function() {
     var monday = $("#monday-checkbox").is(":checked") ? "1" : "0";
@@ -646,7 +577,7 @@ $(document).ready(function() {
     };
     writeTagsToPLC(plcURL, tags, writePLCFail, delayedGetPLCPrograms);
   });
-
+/*
   $("#button-confirm-date-program").click(function() {
     var startDate = $("#start-date-program").val();
     var endDate = $("#end-date-program").val();
@@ -677,7 +608,7 @@ $(document).ready(function() {
       return;
     }
   });
-
+*/
   $(".button-confirm-program").click(function() {
     //var zone = $(this).closest("tr").attr("class");
     //console.log(zone);

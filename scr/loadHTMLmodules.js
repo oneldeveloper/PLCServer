@@ -1,5 +1,5 @@
 function loadMonitorValveModule(zone, name, image){
-    console.log("called");
+    console.log("called" + zone);
     $(zone).load('elements/SingleHomepageModule.htm', function(){
         $(zone + " .item-image").attr("src", image);
         $(zone + " .item-name").text(name);
